@@ -359,7 +359,7 @@ class DoctrineDataSource extends FilterableDataSource implements IDataSource, IA
 	}
 
 
-	private function checkAliases(string $column): string
+	protected function checkAliases(string $column): string
 	{
 		if (Strings::contains($column, '.')) {
 			return $column;
