@@ -501,15 +501,23 @@
 {define column-header}
 	{if !$column->isHeaderEscaped()}
 		{if $column instanceof \Nette\Utils\Html || !$column->isTranslatableHeader()}
-			{$column->getName()|noescape}
+			<abbr title="{$abbr}" data-toggle="tooltip">
+				{$column->getName()|noescape}
+			</abbr>
 		{else}
-			{$column->getName()|translate|noescape}
+			<abbr title="{$abbr}" data-toggle="tooltip">
+				{$column->getName()|translate|noescape}
+			</abbr>
 		{/if}
 	{else}
 		{if $column instanceof \Nette\Utils\Html || !$column->isTranslatableHeader()}
-			{$column->getName()}
+			<abbr title="{$abbr}" data-toggle="tooltip">
+				{$column->getName()}
+			</abbr>
 		{else}
-			{$column->getName()|translate}
+			<abbr title="{$abbr}" data-toggle="tooltip">
+				{$column->getName()|translate}
+			</abbr>
 		{/if}
 	{/if}
 {/define}
