@@ -97,6 +97,11 @@ abstract class Column extends FilterableColumn
 	protected $editableValueCallback = null;
 
 	/**
+	 * @var string|null
+	 */
+	protected $tooltip = null;
+
+	/**
 	 * @return mixed
 	 */
 	public function render(Row $row)
@@ -660,5 +665,24 @@ abstract class Column extends FilterableColumn
 		}
 
 		return $return;
+	}
+
+	public function __clone(): void
+	{
+		foreach ($this->elementCache as $key => $value) {
+			if (is_object($value)) {
+				$this->elementCache[$key] = clone $value;
+			}
+		}
+	}
+
+	public function setTooltip(string $title): void
+	{
+		$this->tooltip = $title;
+	}
+
+	public function getTooltip(): ?string
+	{
+		return $this->tooltip;
 	}
 }
